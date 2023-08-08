@@ -1,0 +1,55 @@
+/* Estilos gerais para o body */
+body {
+    background-color: black;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.header-bar {
+    background-color: #dc3545;
+    height: 50px;
+    width: 100%;
+}
+
+
+
+/* Estilos para o header */
+header {
+    text-align: center;
+}
+
+/* Estilos para o elemento topics */
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+/* Estilo para o container */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+    align-items: center;
+    flex-basis: 48%;
+    /* Definindo o tamanho das colunas */
+}
+
+/* Estilo para as colunas */
+.container>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid white;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Estilo para o elemento de classe "topics" */
+.topics .topics {
+    color: white;
+}
