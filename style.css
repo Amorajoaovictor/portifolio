@@ -14,6 +14,7 @@ body {
     max-width: auto;
     margin: 0 auto;
     background-color: black;
+    align-content: space-between;
 }
 
 header {
@@ -93,6 +94,7 @@ header .navegacao-primaria li a {
 .section-div img {
     max-width: 100%;
     margin: auto;
+
 }
 
 .digitando::after {
@@ -205,7 +207,7 @@ main {
 main .sobre {
     margin-top: 60px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 1fr;
     grid-column: 1/-1;
     justify-content: center;
     align-items: center;
@@ -253,12 +255,17 @@ main .sobre {
 
 article img {
     align-self: center;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 85%;
+    max-height: 85%;
     width: 700px;
     min-width: 300px;
     min-height: width;
+    border: 20px ;
     padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 8px #fff;
+    margin-left: 20px;
+    margin-right: 25px; 
 }
 
 /* Media Query for Mobile Devices */
@@ -275,7 +282,7 @@ article img {
 
     /* About me section */
     main .sobre {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr ;
         gap: 10px;
         padding: 20px;
         height: auto;
