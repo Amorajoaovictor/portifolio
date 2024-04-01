@@ -94,6 +94,7 @@ header .navegacao-primaria li a {
 .section-div img {
     max-width: 100%;
     margin: auto;
+    border-radius: 50px;
 
 }
 
@@ -103,6 +104,27 @@ header .navegacao-primaria li a {
     opacity: 1;
     animation: pisca 0.5s infinite;
 }
+
+footer {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    /* background-color: #111; */
+    color: white;
+    gap: 50px;
+    padding: 20px;
+}
+footer h1  {
+    font-size: 2.5rem;
+    color: #dc3545;
+
+}
+
+
+footer h1 span {
+    color: white;
+}
+
 
 @keyframes pisca {
     from {
