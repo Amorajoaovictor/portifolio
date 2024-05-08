@@ -9,79 +9,39 @@
 
 <body style="display: flex;">
 	<pre>
-        const matrix = [];
-
-        for (let i = 0; i < 20; i++) {
-            const row = [];
-
-            for (let j = 0; j < 20; j++) {
-                if ((i + j) % 2 === 1) {
-                    row.push(1);
-                } else {
-                    row.push(0);
-                }
-            }
-
-            matrix.push(row);
-        }
-
-        const graph = new Map();
-
-        for (let i = 0; i < matrix.length; i++) {
-            const row = matrix[i];
-            const neighbors = [];
-
-            for (let j = 0; j < row.length; j++) {
-                if (row[j] === 1) {
-                    neighbors.push(j);
-                }
-            }
-
-            graph.set(i, neighbors);
-        }
-        console.log(graph);
-        function bfs(graph, start) {
-            const visited = new Set();
-            const queue = [start];
-
-            while (queue.length > 0) {
-                const node = queue.shift();
-
-                if (visited.has(node)) {
-                    continue;
-                }
-
-                visited.add(node);
-
-                const neighbors = graph.get(node);
-
-                for (let i = 0; i < neighbors.length; i++) {
-                    queue.push(neighbors[i]);
-                }
-            }
-
-            return visited;
-        }
-        bfs(graph, 0);
-    </pre>
-	<div>
-		<button onclick="funcaomtdoida()">Clique aqui para<br>obter a reposta</button>
-
-		<div id="exibir">
-		</div>
-	</div>
-
-	<script>
-		function funcaomtdoida() {
-			const result = bfs(graph, 0);
-			document.getElementById("exibir").innerText = result;
+		function bfsToTree(graph, startNode) {
+			const tree = new Map();
+			const visited = new Set();
+			const queue = [startNode];
+			visited.add(startNode);
+		
+			// Initialize the tree with all nodes
+			for (const node of graph.keys()) {
+				tree.set(node, { parent: null, children: [] });
+			}
+		
+			while (queue.length > 0) {
+				const currentNode = queue.shift();
+				const neighbors = graph.get(currentNode);
+		
+				for (const neighbor of neighbors) {
+					if (!visited.has(neighbor)) {
+						queue.push(neighbor);
+						visited.add(neighbor);
+		
+						tree.get(neighbor).parent = currentNode;
+						tree.get(currentNode).children.push(neighbor);
+					}
+				}
+			}
+		
+			return tree;
 		}
-
+		
+		// Create the adjacency list graph from the matrix
 		const matrix = [];
-
 		for (let i = 0; i < 20; i++) {
 			const row = [];
-
 			for (let j = 0; j < 20; j++) {
 				if ((i + j) % 2 === 1) {
 					row.push(1);
@@ -89,49 +49,36 @@
 					row.push(0);
 				}
 			}
-
 			matrix.push(row);
 		}
-
+		
 		const graph = new Map();
-
 		for (let i = 0; i < matrix.length; i++) {
 			const row = matrix[i];
 			const neighbors = [];
-
 			for (let j = 0; j < row.length; j++) {
 				if (row[j] === 1) {
 					neighbors.push(j);
 				}
 			}
-
 			graph.set(i, neighbors);
 		}
+		
+		const secret = bfsToTree(graph, 0);
+		console.log(secret);
+	</pre>
 
-		console.log(graph);
-		function bfs(graph, start) {
-			const visited = new Set();
-			const queue = [start];
+	<div style="flex-grow: 6; margin: 10px; padding: 10px;">
+		<button id="showButton">Clique aqui para obter a resposta</button>
+		<pre id="exibir">
+			<!-- Aqui será exibido o conteúdo do secret -->
+		</pre>
+	</div>
+	
+	<script src="bfs.js">
 
-			while (queue.length > 0) {
-				const node = queue.shift();
-
-				if (visited.has(node)) {
-					continue;
-				}
-
-				visited.add(node);
-
-				const neighbors = graph.get(node);
-
-				for (let i = 0; i < neighbors.length; i++) {
-					queue.push(neighbors[i]);
-				}
-			}
-
-			return Array.from(visited).join(', ');
-		}
 	</script>
+
 </body>
 
 </html>
